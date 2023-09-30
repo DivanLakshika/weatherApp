@@ -2,13 +2,14 @@ import { useParams } from "react-router-dom";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
+import {  CardActionArea, Grid } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import img3 from "./img3.jpg";
 import { useState,useEffect } from "react";
 import CloudQueueOutlinedIcon from '@mui/icons-material/CloudQueueOutlined';
+
+//this is the unique page contain according to name of the place
 
 export default function New(){
 
@@ -34,7 +35,7 @@ export default function New(){
   const formattedTime2 = `${currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()}, ${currentTime.toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
 
 
-  const {name,country,des,temp,tmin,tmax,pressure,hum,visi,wind,deg,sr,ss}=useParams();
+  const {name,country,des,temp,tmin,tmax,pressure,hum,visi,wind,deg,sr,ss}=useParams(); //get details from oneCitypage
 
 
   //styling

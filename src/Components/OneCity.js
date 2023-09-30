@@ -1,9 +1,8 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
+import {  CardActionArea, Grid } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import img3 from "./img3.jpg";
 import { useState,useEffect } from "react";
@@ -34,24 +33,14 @@ export default function OneCity({ weather }) {
 
  // const date = new Date(1695947329);
   return (
-
-    
     <Card sx={{ maxWidth: 500 }} >
       <CardActionArea>
-        {/* <CardMedia
-          component="img"
-          height="140"
-         // src={img3}
-          image="https://www.hindustantimes.com/ht-img/img/2023/08/25/1600x900/international_dog_day_1692974397743_1692974414085.jpg"
-          alt="green iguana"//
-  />*/ }
         <CardContent style={{ backgroundColor: "#383B47" }} >
           
           <Grid
             container
             style={{ height: 140, backgroundImage: `url(${img3})`,
-            backgroundSize:"cover",
-
+            backgroundSize:"cover"
           }}
           >
             <Grid item xs={6}>
@@ -112,11 +101,7 @@ export default function OneCity({ weather }) {
           </Grid>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions> */}
+      
     </Card>
    
   );

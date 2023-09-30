@@ -13,8 +13,7 @@ const apiToken = `14293274ae83527da045f73b84430755`; // API key
 function All() {
  
   const [cityCodes, setCityCodes] = useState([]);  //toget citycode to array
-  const [weatherData, setWeatherData] = useState([]); //to get weatherdata to array
-  const [loading, setLoading] = useState(true); 
+  const [weatherData, setWeatherData] = useState([]); //to get weatherdata to array 
   const navigate = useNavigate(); //navigate pages
 
   useEffect(() => {
@@ -54,10 +53,10 @@ function All() {
   
       const data = await response.json();
       setWeatherData(data.list);
-      setLoading(false);
+     
     } catch (error) {
       console.error("Error:", error);
-      setLoading(false);
+      
     }
    
   } 
@@ -101,7 +100,7 @@ function All() {
       <Grid container spacing={2}  style={{width:"100%"}    }>  
         {weatherData.map((weather) => {
           return (
-            <Grid item xs={4} sm={8} md={4} lg={3} onClick={() => handleGridClick( //assign grid to control value and can see  both desktop and mobile 
+            <Grid item xs={2} sm={10} md={5} lg={4} onClick={() => handleGridClick( //assign grid to control value and can see  both desktop and mobile 
             weather.name,
             weather.sys.country,
             weather.weather[0].description,

@@ -10,7 +10,6 @@ function App() {
     <Router>
     <Routes>
       <Route path='/' element={<All/>} />
-      
       <Route path='oneCityView/:name/:country/:des/:temp/:tmin/:tmax/:pressure/:hum/:visi/:wind/:deg/:sr/:ss' element={<New/>} />
       </Routes>
    </Router>

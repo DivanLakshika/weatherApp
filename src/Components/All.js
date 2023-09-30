@@ -98,10 +98,10 @@ function All() {
         Weather App
       </Typography>
      
-      <Grid container spacing={2}  style={{width:"100%"}    }>
+      <Grid container spacing={2}  style={{width:"100%"}    }>  
         {weatherData.map((weather) => {
           return (
-            <Grid item xs={4} onClick={() => handleGridClick(
+            <Grid item xs={4} sm={8} md={4} lg={3} onClick={() => handleGridClick( //assign grid to control value and can see  both desktop and mobile 
             weather.name,
             weather.sys.country,
             weather.weather[0].description,

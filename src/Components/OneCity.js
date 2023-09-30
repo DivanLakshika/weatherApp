@@ -1,76 +1,116 @@
-import React from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { Box,Typography,Grid,TableContainer,Paper,Table,TableHead,TableRow,TableCell,TableBody } from "@material-ui/core";
-import img3 from './images/img3.jpg';
-import { Location } from "react-router-dom";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
+import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
+import img3 from "./img3.jpg";
+import { useState,useEffect } from "react";
 
-function OneCity(){
-  const location=useLocation();
-  const {id} = useParams();
-  const {cityCode}=location.state|| {};
-  console.log(" weather data:"+cityCode) ;
-  const weatherData={"abs":1};
-  if(!weatherData) {
-    return <div>weather data is not available!</div>
+
+export default function OneCity({ weather }) {
+  const [currentTime, setCurrentTime] = useState(new Date());
+  useEffect(() => {
+    // Update the current time every second/
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [currentTime]);
+  const formattedTime = `${currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()}, ${currentTime.toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
+
+  const convertSuntime=(time)=>{
+    const date = new Date(time * 1000); // Convert seconds to milliseconds
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ?'pm':'am';
+    const formattedHours = (hours % 12) || 12; // Convert to 12-hour format
+    const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')}${ampm}`;
+    return formattedTime;
   }
-  else
-  return ( 
+
+  const handleCardClick=(id)=>{
+    console.log(id);
+  }
+
+
+ // const date = new Date(1695947329);
+  return (
     
-    
-    <div style={{ backgroundImage: `url(${img3})`, backgroundSize: 'cover' }}>
-      {Object.values(weatherData)?.map((cityWeather) => (
-        <li
-          key={cityWeather.id}
-        >
-          <div >
-            {cityWeather.name}, {cityWeather.sys.country}
-            <br />
-            Temperature: {cityWeather.main.temp}°C
-            <br />
-            {cityWeather.weather[0].description}
-            <br />
-            Temp Min: {cityWeather.main.temp_min}°C & Temp Max: {cityWeather.main.temp_max}°C
-            <br />
-            Pressure: {cityWeather.main.pressure} hPa
-            <br />
-            Humidity: {cityWeather.main.humidity}%
-            <br />
-            Visibility: {cityWeather.visibility / 1000} km
-            <br />
-            Wind: {cityWeather.wind.speed} m/s & {cityWeather.wind.deg}°
-            <br />
-            Sunrise: {cityWeather.sys.sunrise}
-            <br />
-            Sunset: {cityWeather.sys.sunset}
-          </div>
-        </li>
-      ))}
-    </div>
-  )
-      }
+    <Card sx={{ maxWidth: 500 }}>
+      <CardActionArea>
+        {/* <CardMedia
+          component="img"
+          height="140"
+         // src={img3}
+          image="https://www.hindustantimes.com/ht-img/img/2023/08/25/1600x900/international_dog_day_1692974397743_1692974414085.jpg"
+          alt="green iguana"//
+  />*/ }
+        <CardContent style={{ backgroundColor: "#383B47" }} >
+          <Grid
+            container
+            style={{ height: 140, backgroundImage: `url(${img3})`,
+            backgroundSize:"cover",
 
+          }}
+          >
+            <Grid item xs={6}>
+              <Typography color={"white"} variant="subtitle2">
+                {weather.name} {weather.sys.country}
+                <br></br> 
+                {formattedTime}
+                
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography color={"white"} variant="subtitle2" style={{ fontSize: '18px' }}>
+                   {Math.round(weather.main.temp)} °C
+              
+              </Typography>
+              <Typography color={"white"} variant="subtitle2">
+                 Temp Min: {Math.round(weather.main.temp_min)} °C
+              </Typography>
 
-
-export default OneCity;
-
-/*{customerData.map((item) => (
-          <TableRow key={item.id}>
-            <TableCell>{item.id}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.phoneNumber}</TableCell>
-            <TableCell>{item.address}</TableCell>
-            <TableCell>{item.clz}</TableCell>
-
-            <TableCell>
-                <Button variant="contained" color="primary" onClick={() => handleUpdate(item.id)}>
-                  Update
-                </Button>
-            </TableCell> 
-            <TableCell>
-                <Button variant="contained" color="secondary" onClick={() => handleDelete(item.id)}>
-                  Delete
-                </Button>
-            </TableCell>
-
-          </TableRow>
-        ))} */
+              <Typography color={"white"} variant="subtitle2">
+                 Temp Max: {Math.round(weather.main.temp_max)} °C
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <Typography color={"white"} variant="subtitle2">
+                Pressure : {weather.main.pressure}pa
+              </Typography>
+              <Typography color={"white"} variant="subtitle2">
+                Humidity : {weather.main.humidity} %
+              </Typography>
+              <Typography color={"white"} variant="subtitle2">
+                Visibility : {(weather.visibility/1000).toFixed(1)} km
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <NearMeOutlinedIcon style={{ color: "white" }} />
+              <Typography color={"white"}>{(weather.wind.speed).toFixed(1)}ms / {weather.wind.deg} Degree</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography color={"white"} variant="subtitle2">
+                Sunrise : {convertSuntime(weather.sys.sunrise)}
+                {/* {new Date(weather.sys.sunrise).toLocaleString().toString()} */}
+              </Typography>
+              <Typography color={"white"} variant="subtitle2">
+                Sunset : {convertSuntime(weather.sys.sunset)}
+              </Typography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </CardActionArea>
+      {/* <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+      </CardActions> */}
+    </Card>
+   
+  );
+}

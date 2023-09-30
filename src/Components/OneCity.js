@@ -46,14 +46,21 @@ export default function OneCity({ weather }) {
           }}
           >
             <Grid item xs={6}>
-              <Typography color={"white"} variant="subtitle2">
+              <Typography color={"white"} variant="subtitle2"fontSize='20px' align="center" >
+
                 {weather.name} {weather.sys.country}
                 <br></br> 
+                <Typography color={"white"} variant="subtitle2"fontSize='15px' >
+                  
                 {formattedTime}
-                <br></br>  <br></br>
+                <br></br>
+                <br></br>
+                
+                </Typography>
+               
                 <Grid >
                 
-                  <Typography color={"white"} variant="subtitle2"fontSize='15px'  >
+                  <Typography color={"white"} variant="subtitle2"fontSize='15px' align="center"  >
                     <CloudQueueOutlinedIcon style={{ color: "white" }} />
                       {"  "+ weather.weather[0].description}
                   </Typography>
@@ -62,7 +69,7 @@ export default function OneCity({ weather }) {
               </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography color={"white"} variant="subtitle2" style={{ fontSize: '18px' }}>
+              <Typography color={"white"} variant="subtitle2" style={{ fontSize: '35px' }}>
                    {Math.round(weather.main.temp)} °C
               
               </Typography>
@@ -75,8 +82,11 @@ export default function OneCity({ weather }) {
               </Typography>
             </Grid>
           </Grid>
+          <br></br>
+          <br></br>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            
+            <Grid item xs={4} style={{ borderRight: '1px solid #ffffff', padding: '0 10px' }} >
               <Typography color={"white"} variant="subtitle2">
                 Pressure : {weather.main.pressure}pa
               </Typography>
@@ -87,7 +97,7 @@ export default function OneCity({ weather }) {
                 Visibility : {(weather.visibility/1000).toFixed(1)} km
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4} style={{ borderRight: '1px solid #ffffff', padding: '0 10px' }} >
               <NearMeOutlinedIcon style={{ color: "white" }} />
               <Typography color={"white"}>{(weather.wind.speed).toFixed(1)}ms / {weather.wind.deg} Degree</Typography>
             </Grid>

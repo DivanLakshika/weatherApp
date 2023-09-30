@@ -50,7 +50,7 @@ export default function New(){
     card: {
       width: 600, // Increase the width as needed
      height: 400, 
-      maxWidth: 500,
+      maxWidth: 600,
       backgroundColor: "#383B47",
     //  textAlign: 'center', // Center the content within the card
     },
@@ -61,7 +61,7 @@ export default function New(){
   };
 
     return (
-    <div style={styles.container}>
+    <div style={styles.container} >
      
      <Card sx={styles.card}>
       <CardActionArea>
@@ -74,24 +74,31 @@ export default function New(){
 
           }}
           >
+            
           <Grid item xs={6}>
-            <Typography color={"white"} variant="subtitle2"  fontSize='25px'>
-             
+            <Typography color={"white"} variant="subtitle2"  fontSize='30px' align="center">
+            <br></br>
                 {name} {country}
-              <br></br> 
-              {formattedTime2}
-              <br></br>  <br></br> 
-              <Grid >
-                <CloudQueueOutlinedIcon style={{ color: "white" }} />
-                  <Typography color={"white"} variant="subtitle2"fontSize='20px'  >
-                    {des}
+               
+              <Typography color={"white"} variant="subtitle2"fontSize='15px' >
+                  
+                  {formattedTime2}
+                  <br></br>
+                  <br></br>
                   </Typography>
-              </Grid>
+                <Grid >
+                  <br></br>
+                
+                <Typography color={"white"} variant="subtitle2"fontSize='20px' align="center"  >
+                  <CloudQueueOutlinedIcon style={{ color: "white" }} />
+                    {" " +des}
+                </Typography>
+              </Grid> 
             </Typography>
          </Grid>
           <Grid item xs={6}>
             <br></br>
-            <Typography color={"white"} variant="subtitle2" fontSize='25px' textAlign='center' >
+            <Typography color={"white"} variant="subtitle2" fontSize='35px' textAlign='center' >
                 {temp} °C
             
             </Typography>
@@ -104,8 +111,10 @@ export default function New(){
             </Typography>
            </Grid>
           </Grid>
+          <br></br>
+          <br></br>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={4} style={{ borderRight: '1px solid #ffffff', padding: '0 10px' }}>
           <br></br>
             <Typography color={"white"} variant="subtitle2"fontSize='15px' >
               Pressure : {pressure}pa
@@ -117,7 +126,7 @@ export default function New(){
               Visibility : {visi} km
             </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} style={{ borderRight: '1px solid #ffffff', padding: '0 10px' }}>
         <br></br>
           <NearMeOutlinedIcon style={{ color: "white" }} />
           <Typography color={"white"}>{(wind)}ms / {deg} Degree</Typography>

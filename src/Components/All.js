@@ -12,10 +12,6 @@ const apiToken = `14293274ae83527da045f73b84430755`; // Replace with your API ke
 
 //const setIntervalweather=setInterval(All, 1000);
 
-function New(){
-  console.log("abs")
-}
-const setIntervalweather=setInterval(New, 1000);
 
 function All() {
  
@@ -40,10 +36,45 @@ function All() {
     }
   }, [cityCodes]);
 
- 
+  useEffect(() => {
+    console.log("WeatherData ::: ", weatherData);
+  }, [weatherData]);
+
+
+  useEffect(() => {
+    if (cityCodes.length) {
+      fetchCustomerData(); // Initial data fetch
+      const intervalId = setInterval(fetchCustomerData, 1000*60*5); // Fetch data every 5minutes
+      console.log("interval");
+      return () => {
+        clearInterval(intervalId); // Clear the interval when the component unmounts
+      };
+    }
+  }, [cityCodes]);
+
+  
 
   async function fetchCustomerData(apiUrl) {
     try {
+      const units = "metric";
+      const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityCodes.join(
+        ","
+      )}&units=${units}&appid=${apiToken}`;
+      const response = await fetch(apiUrl);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setWeatherData(data.list);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setLoading(false);
+    }
+   /* try {
+      console.log("assdss");
       const response = await fetch(apiUrl);
       if (response.ok) {
         const data = await response.json();
@@ -56,8 +87,9 @@ function All() {
     } catch (error) {
       console.error("Error:", error);
       setLoading(false);
-    }
-  }
+    }*/
+  } 
+ // const setIntervalweather=setInterval(fetchCustomerData, 10000);
 
   //second part/
   const getWeatherBackground = (weatherDescription) => {

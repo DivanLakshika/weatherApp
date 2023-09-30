@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import img3 from "./img3.jpg";
 import { useState,useEffect } from "react";
+import CloudQueueOutlinedIcon from "@mui/icons-material/CloudQueueOutlined";
 
 
 export default function OneCity({ weather }) {
@@ -30,15 +31,12 @@ export default function OneCity({ weather }) {
     return formattedTime;
   }
 
-  const handleCardClick=(id)=>{
-    console.log(id);
-  }
-
 
  // const date = new Date(1695947329);
   return (
+
     
-    <Card sx={{ maxWidth: 500 }}>
+    <Card sx={{ maxWidth: 500 }} >
       <CardActionArea>
         {/* <CardMedia
           component="img"
@@ -48,6 +46,7 @@ export default function OneCity({ weather }) {
           alt="green iguana"//
   />*/ }
         <CardContent style={{ backgroundColor: "#383B47" }} >
+          
           <Grid
             container
             style={{ height: 140, backgroundImage: `url(${img3})`,
@@ -60,6 +59,14 @@ export default function OneCity({ weather }) {
                 {weather.name} {weather.sys.country}
                 <br></br> 
                 {formattedTime}
+                <br></br>  <br></br>
+                <Grid >
+                
+                  <Typography color={"white"} variant="subtitle2"fontSize='15px'  >
+                    <CloudQueueOutlinedIcon style={{ color: "white" }} />
+                      {"  "+ weather.weather[0].description}
+                  </Typography>
+                </Grid> 
                 
               </Typography>
             </Grid>

@@ -5,10 +5,20 @@ import { useNavigate } from "react-router-dom";
 import img3 from "./images/img3.jpg";
 import OneCity from "./OneCity";
 import Grid from "@mui/material/Grid";
+import { Typography } from "@mui/material";
+
 
 const apiToken = `14293274ae83527da045f73b84430755`; // Replace with your API key
 
+//const setIntervalweather=setInterval(All, 1000);
+
+function New(){
+  console.log("abs")
+}
+const setIntervalweather=setInterval(New, 1000);
+
 function All() {
+ 
   const [cityCodes, setCityCodes] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,9 +40,7 @@ function All() {
     }
   }, [cityCodes]);
 
-  useEffect(() => {
-    console.log("WeatherData ::: ", weatherData);
-  }, [weatherData]);
+ 
 
   async function fetchCustomerData(apiUrl) {
     try {
@@ -98,17 +106,55 @@ function All() {
   }, [cityCodes]);
  const formattedTime = `${currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()}, ${currentTime.toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
 
+ const handleGridClick=(name,country,des,temp,tmin,tmax,pressure,hum,visi,wind,deg,sr,ss)=>{
+  
+   navigate(`oneCityView/${name}/${country}/${des}/${temp}/${tmin}/${tmax}/${pressure}/${hum}/${visi}/${wind}/${deg}/${sr}/${ss}`);
+  
+
+ }
+
   return (
-    <div style={{ backgroundImage: `url(${img3})`, backgroundSize: "cover" }}>
-      <Grid container spacing={2}>
+    <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          backgroundImage: `url(${img3})`,
+          backgroundSize: 'cover',
+          boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)', // Add a shadow border effect
+          padding: '20px', // Add padding to the content
+          borderRadius: '10px', // Add rounded corners
+    }}>
+      <Typography variant="h4" gutterBottom align="center" style={{ color: 'white' }} >
+        Weather App
+      </Typography>
+     
+      <Grid container spacing={2}  style={{width:"100%"}    }>
         {weatherData.map((weather) => {
           return (
-            <Grid item xs={4}>
+            <Grid item xs={4} onClick={() => handleGridClick(
+            weather.name,
+            weather.sys.country,
+            weather.weather[0].description,
+            Math.round(weather.main.temp),
+            Math.round(weather.main.temp_min),
+            Math.round(weather.main.temp_max),
+            weather.main.pressure,
+            weather.main.humidity,
+            (weather.visibility/1000).toFixed(1),
+            (weather.wind.speed).toFixed(1),
+            weather.wind.deg,
+            weather.sys.sunrise,
+            weather.sys.sunset
+
+            )}>
               <OneCity weather={weather} />
             </Grid>
           );
         })}
       </Grid>
+      
     </div>
   );
 }

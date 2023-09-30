@@ -7,6 +7,9 @@ import OneCity from "./OneCity";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
+//code basic part page
+
+
 const apiToken = `14293274ae83527da045f73b84430755`; // API key
 
 
@@ -61,18 +64,7 @@ function All() {
    
   } 
 
-  //date function
-  const [currentTime, setCurrentTime] = useState(new Date());
-  useEffect(() => {
-    
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, [cityCodes]);
- const formattedTime = `${currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).toLowerCase()}, ${currentTime.toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
-
-
+  
   //click to get one city deatils weather
  const handleGridClick=(name,country,des,temp,tmin,tmax,pressure,hum,visi,wind,deg,sr,ss)=>{
   

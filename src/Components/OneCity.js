@@ -8,11 +8,13 @@ import img3 from "./img3.jpg";
 import { useState,useEffect } from "react";
 import CloudQueueOutlinedIcon from "@mui/icons-material/CloudQueueOutlined";
 
+// cities reprecenter
+
 
 export default function OneCity({ weather }) {
   const [currentTime, setCurrentTime] = useState(new Date());
   useEffect(() => {
-    // Update the current time every second/
+    // Update the current time every second
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);

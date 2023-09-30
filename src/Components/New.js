@@ -10,7 +10,7 @@ import { useState,useEffect } from "react";
 import CloudQueueOutlinedIcon from '@mui/icons-material/CloudQueueOutlined';
 
 //this is the unique page contain an unique page according to name of the place
-
+//added by divan
 export default function New(){
 
   const convertSuntime=(time)=>{

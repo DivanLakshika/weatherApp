@@ -18,3 +18,9 @@ function App() {
 }
 
 export default App;
+
+/*FROM nginx:1.19.0
+WORKDIR /the/workdir/path
+RUN rm -rf ./*
+COPY --from=builder /app/build .
+ENTRYPOINT [ "nginx", "-g","daemon off;" ] */

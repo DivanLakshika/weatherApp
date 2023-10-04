@@ -52,7 +52,7 @@ export default function New(){
      height: 400, 
       maxWidth: 600,
       backgroundColor: "#383B47",
-    //  textAlign: 'center', // Center the content within the card
+    //  textAlign: 'center', // Center the content within the card/
     },
     cardImage: {
       height: 200,

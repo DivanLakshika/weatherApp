@@ -11,7 +11,7 @@ import { Typography } from "@mui/material";
 
 
 const apiToken = `14293274ae83527da045f73b84430755`; // API key
-
+//const apiToken = `f563e4e24f6acee0e318c52fe8019fe1`;
 
 function All() {
  
@@ -19,10 +19,12 @@ function All() {
   const [weatherData, setWeatherData] = useState([]); //to get weatherdata to array 
   const navigate = useNavigate(); //navigate pages
 
+
   useEffect(() => {
     const cityCodesArray = jsonData.List.map((city) => city.CityCode);  //map city code array
     setCityCodes(cityCodesArray);
   }, []);
+
 
   useEffect(() => {
     if (cityCodes.length) {                 //if citycode available then create get api
@@ -31,23 +33,24 @@ function All() {
         ","
       )}&units=${units}&appid=${apiToken}`;
       console.log("API URL:", apiUrl); 
-      fetchCustomerData(apiUrl);  
-
-          const intervalId = setInterval(fetchCustomerData(apiUrl), 1000*60*5); // Fetch data every 5minutes
+      fetchCustomerData();   
+      
+      const intervalId = setInterval(fetchCustomerData, 1000*60*5); // Fetch data every 5minutes/
+        //console.log(fetchCustomerData);
           console.log("interval");
           return () => {
             clearInterval(intervalId); // Clear the interval when the component unmounts
-          };       
+          };    
     }
-  }, [cityCodes]);                        //remeber the citycode
+  }, [cityCodes]);     //remeber the citycode //cityCodes
 
 
-  async function fetchCustomerData(apiUrl) {
+  async function fetchCustomerData() {
     try {
-     /* const units = "metric";
+      const units = "metric";
       const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityCodes.join(
         ","
-      )}&units=${units}&appid=${apiToken}`; */
+      )}&units=${units}&appid=${apiToken}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {
@@ -62,7 +65,9 @@ function All() {
       
     }
    
-  } 
+  }  
+
+
 
   
   //click to get one city deatils weather
@@ -92,7 +97,7 @@ function All() {
       <Grid container spacing={2}  style={{width:"100%"}    }>  
         {weatherData.map((weather) => {
           return (
-            <Grid item xs={2} sm={10} md={5} lg={4} onClick={() => handleGridClick( //assign grid to control value and can see  both desktop and mobile 
+            <Grid item xs={10} sm={10} md={5} lg={4} onClick={() => handleGridClick( //assign grid to control value and can see  both desktop and mobile 
             weather.name,
             weather.sys.country,
             weather.weather[0].description,

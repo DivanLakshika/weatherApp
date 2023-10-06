@@ -24,15 +24,16 @@ export default function FetchingCustomerData(props) {
 
       const intervalId = setInterval(fetchCustomerData, 1000 * 60 * 5); // Fetch data every 5minutes/
       //console.log(fetchCustomerData);
-      console.log("interval");
-      return () => {
+
+      /* return () => {
         clearInterval(intervalId); // Clear the interval when the component unmounts
-      };
+      }; */ //noneed
     }
   }, [cityCodes]); //remeber the citycode //cityCodes
 
   async function fetchCustomerData() {
     try {
+      console.log("interval");
       const units = "metric";
       const apiUrl = `http://api.openweathermap.org/data/2.5/group?id=${cityCodes.join(
         ","

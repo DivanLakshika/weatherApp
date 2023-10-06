@@ -57,8 +57,9 @@ export default function WeatherTemplate(props) {
         {weatherData.map((weather) => {
           return (
             <Grid
+              key={weather.name}
               item
-              xs={10}
+              xs={12}
               sm={10}
               md={5}
               lg={4}

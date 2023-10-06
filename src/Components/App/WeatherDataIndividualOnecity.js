@@ -14,6 +14,7 @@ import img6 from "./Images/img6.jpg";
 import img7 from "./Images/img7.jpg";
 import img8 from "./Images/img8.jpg";
 import imgBg from "./Images/imgBg.jpg";
+import imgC from "./Images/imgC.jpg";
 import CloudQueueOutlinedIcon from "@mui/icons-material/CloudQueueOutlined";
 import { ConvertSunTime } from "../../utils/ConvertSunTime";
 import { FormattedTime } from "../../utils/FormattedTime";
@@ -96,7 +97,7 @@ export default function WeatherDataIndividualOnecity() {
             container
             style={{
               height: 210,
-              backgroundImage: `url(${img})`,
+              backgroundImage: `url(${imgC})`,
               backgroundSize: "cover",
             }}
           >

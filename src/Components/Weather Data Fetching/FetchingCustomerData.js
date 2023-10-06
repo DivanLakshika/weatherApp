@@ -3,7 +3,13 @@ import { useState, useEffect } from "react";
 
 export default function FetchingCustomerData(props) {
   const cityCodes = props.citiCodesFetchingCustomerData;
-  const apiToken = process.env.REACT_APP_API_KEY;
+  let apiToken;
+  if (process.env.REACT_APP_API_KEY === undefined) {
+    apiToken = `14293274ae83527da045f73b84430755`;
+  } else {
+    apiToken = process.env.REACT_APP_API_KEY;
+  }
+
   const [weatherData, setWeatherData] = useState([]); //to get weatherdata to array//
 
   useEffect(() => {

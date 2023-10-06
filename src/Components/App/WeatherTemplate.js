@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
-import imgBg from "/Users/Paboda/Desktop/Job interview/ProjectRe/FidenzRe/weatherApp/src/Images/imgBg.jpg";
+import imgBg from "./Images/imgBg.jpg";
 
 export default function WeatherTemplate(props) {
   const weatherData = props.weatherDataToWeatherTemplate;

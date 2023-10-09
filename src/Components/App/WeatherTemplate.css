@@ -1,0 +1,20 @@
+.container {
+  background-size: cover;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.containerN {
+  min-height: 100vh;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.MuiTypography-h4 {
+  color: white;
+  font-size: 30px !important;
+  text-align: center;
+  margin-top: 30px;
+}

@@ -1,14 +1,12 @@
 import React from "react";
-import img1 from "./Images/img1.jpg";
-import img2 from "./Images/img2.jpg";
-import img33 from "./Images/img33.jpg";
-import img4 from "./Images/img4.jpg";
-import img5 from "./Images/img5.jpg";
-import img6 from "./Images/img6.jpg";
-import img7 from "./Images/img7.jpg";
-import img8 from "./Images/img8.jpg";
+import img11 from "./Images/img11.jpg";
+import img22 from "./Images/img22.jpg";
+import img333 from "./Images/img333.jpg";
+import img44 from "./Images/img44.jpg";
+import img55 from "./Images/img55.jpg";
 import Grid from "@mui/material/Grid";
-import { Typography, Card, CardActionArea, CardContent } from "@mui/material";
+import "./WeatherDataOnecity.css";
+import { Typography, Card, CardActionArea, Box } from "@mui/material";
 import CloudQueueOutlinedIcon from "@mui/icons-material/CloudQueueOutlined";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
 import { ConvertSunTime } from "../../utils/ConvertSunTime";
@@ -19,35 +17,103 @@ export default function WeatherDataOnecity(props) {
   let img;
   switch (weather.name) {
     case "Colombo":
-      img = img1;
+      img = img11;
       break;
     case "Tokyo":
-      img = img2;
+      img = img22;
       break;
     case "Liverpool":
-      img = img33;
+      img = img333;
       break;
     case "Paris":
-      img = img4;
+      img = img44;
       break;
     case "Sydney":
-      img = img5;
+      img = img55;
       break;
     case "Boston":
-      img = img6;
+      img = img11;
       break;
     case "Shanghai":
-      img = img7;
+      img = img22;
       break;
     case "Oslo":
-      img = img8;
+      img = img333;
       break;
     default:
-      img = img1;
+      img = img11;
       break;
   }
   return (
-    <Card sx={{ maxWidth: 500 }}>
+    <Card className="card2">
+      <CardActionArea>
+        <Grid
+          container
+          className="gridD1"
+          style={{
+            backgroundImage: `url(${img})`,
+          }}
+        >
+          <Grid item xs={7}>
+            <Typography className="MuiTypographyD1-subtitle2">
+              <b>
+                {weather.name} {weather.sys.country}
+              </b>
+              <Typography className="MuiTypographyD2-subtitle2">
+                {FormattedTime()}
+              </Typography>
+
+              <Typography className="MuiTypographyD3-subtitle2">
+                <Box mr={1}>
+                  <CloudQueueOutlinedIcon style={{ color: "white" }} />
+                </Box>
+                {weather.weather[0].description}
+              </Typography>
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <Typography className="MuiTypographyD4-subtitle2">
+              {Math.round(weather.main.temp)} °C
+            </Typography>
+            <Typography className="MuiTypographyD5-subtitle2">
+              Temp Min: {Math.round(weather.main.temp_min)} °C <br></br>Temp
+              Max: {Math.round(weather.main.temp_max)} °C
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container className="gridD22">
+          <Grid container spacing={0} className="gridD2">
+            <Grid item xs={4} className="gridD3">
+              <Typography className="MuiTypographyD5-subtitle2 ">
+                Pressure : {weather.main.pressure}pa <br></br>
+                Humidity :{weather.main.humidity} % <br></br>
+                Visibility :{(weather.visibility / 1000).toFixed(1)} km
+              </Typography>
+            </Grid>
+            <Grid item xs={4} className="gridD3">
+              <Grid className="gridD4">
+                <NearMeOutlinedIcon style={{ color: "white" }} />
+              </Grid>
+              <Typography className="MuiTypographyD5-subtitle2 ">
+                {weather.wind.speed.toFixed(1)}ms / {weather.wind.deg} Degree
+              </Typography>
+            </Grid>
+            <Grid item xs={4} className="gridD5">
+              <Typography className="MuiTypographyD5-subtitle2">
+                Sunrise : {ConvertSunTime(weather.sys.sunrise)}
+                <br></br>
+                Sunset : {ConvertSunTime(weather.sys.sunset)}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+/* <Card sx={{ maxWidth: 500 }}>
       <CardActionArea>
         <CardContent style={{ backgroundColor: "#383B47" }}>
           <Grid
@@ -58,7 +124,7 @@ export default function WeatherDataOnecity(props) {
               backgroundSize: "cover",
             }}
           >
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <Typography
                 color={"white"}
                 variant="subtitle2"
@@ -85,7 +151,7 @@ export default function WeatherDataOnecity(props) {
                 </Grid>
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <Typography
                 color={"white"}
                 variant="subtitle2"
@@ -143,4 +209,4 @@ export default function WeatherDataOnecity(props) {
       </CardActionArea>
     </Card>
   );
-}
+} */

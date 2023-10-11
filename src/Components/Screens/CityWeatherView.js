@@ -4,14 +4,14 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, Grid, Box } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
-import imgBg from "./Images/imgBg.jpg";
-import imgF from "./Images/imgF.jpg";
+import imgBg from "../../assets/Images/imgBg.jpg";
+import imgF from "../../assets/Images/imgF.jpg";
 import CloudQueueOutlinedIcon from "@mui/icons-material/CloudQueueOutlined";
 import { ConvertSunTime } from "../../utils/ConvertSunTime";
 import { FormattedTime } from "../../utils/FormattedTime";
-import "./WeatherDataIndividualOnecity.css";
+import "./CityWeatherView.css";
 
-export default function WeatherDataIndividualOnecity() {
+export default function CityWeatherView() {
   const {
     name,
     country,

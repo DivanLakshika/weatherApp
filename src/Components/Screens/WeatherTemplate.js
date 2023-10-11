@@ -1,10 +1,10 @@
-import WeatherDataOnecity from "./WeatherDataOnecity";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
-import imgBg from "./Images/imgBg.jpg";
+import imgBg from "../../assets/Images/imgBg.jpg";
 import "./WeatherTemplate.css";
+import CityCard from "./CityCard";
 
 export default function WeatherTemplate(props) {
   const weatherData = props.weatherDataToWeatherTemplate;
@@ -73,7 +73,7 @@ export default function WeatherTemplate(props) {
                   )
                 }
               >
-                <WeatherDataOnecity weathertoWeatherDataoneCity={weather} />
+                <CityCard weathertoWeatherDataoneCity={weather} />
               </Grid>
             );
           })}

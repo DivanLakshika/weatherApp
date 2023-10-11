@@ -27,7 +27,7 @@ export default function FetchingWeatherData(props) {
       const cacheKey = "weatherData"; // Unique cache key for all weather data
       const cachedData = JSON.parse(localStorage.getItem(cacheKey));
 
-      if (Date.now() - cachedData.timestamp < 1000 * 300) {
+      if (cachedData && Date.now() - cachedData.timestamp < 1000 * 300) {
         // Use cached data if it's less than 5 minutes old
 
         const data2 = cachedData.data;

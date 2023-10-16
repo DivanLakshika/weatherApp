@@ -6,6 +6,6 @@ export function ConvertSunTime(time) {
   const formattedHours = hours % 12 || 12; // Convert to 12-hour format
   const formattedTime = `${formattedHours}:${minutes
     .toString()
-    .padStart(2, "0")}${ampm}`;
+    .padStart(2, "0")}${ampm}`; //padStart to display two digit number
   return formattedTime;
 }

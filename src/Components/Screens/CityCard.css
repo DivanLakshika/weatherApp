@@ -1,0 +1,74 @@
+.card2 {
+  width: 600px;
+  height: 300px;
+  min-width: 480px;
+}
+
+.gridD1 {
+  background-size: cover;
+  height: 180px;
+}
+
+.MuiTypographyD1-subtitle2 {
+  color: white;
+  font-size: 25px !important;
+  text-align: center;
+  margin-top: 40px !important;
+}
+.MuiTypographyD2-subtitle2 {
+  color: white;
+  font-size: 15px !important;
+  text-align: center;
+  margin-top: 5px !important;
+}
+
+.MuiTypographyD3-subtitle2 {
+  color: white;
+  display: flex;
+  font-size: 17px !important;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px !important;
+}
+
+.MuiTypographyD4-subtitle2 {
+  color: white;
+  display: flex;
+  font-size: 35px !important;
+  margin-top: 35px !important;
+}
+
+.MuiTypographyD5-subtitle2 {
+  color: white;
+  display: flex;
+  font-size: 15px !important;
+  margin-top: 5px;
+}
+
+.gridD2 {
+  height: 100px !important;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.gridD22 {
+  height: 120px;
+  background-color: #383b47;
+}
+.gridD3 {
+  border-right: 1px solid #ffffff;
+  padding: 0 10px;
+  height: 70px;
+  margin-top: 10px !important ;
+}
+.gridD4 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.gridD5 {
+  padding: 0 10px;
+  height: 80px;
+  margin-top: 10px !important;
+}
